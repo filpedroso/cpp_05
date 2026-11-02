@@ -17,7 +17,7 @@
 #include <string>
 #include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -25,6 +25,9 @@ class Bureaucrat
 	int					_grade;
 
 	public:
+		static const int	highestGrade = 1;
+		static const int	lowestGrade = 150;
+
 		Bureaucrat( const std::string& name, int grade );
 		Bureaucrat( const Bureaucrat& bur );
 		~Bureaucrat();
@@ -34,7 +37,8 @@ class Bureaucrat
 		int					getGrade() const;
 		void				incrementGrade();
 		void				decrementGrade();
-		void				signForm( Form& form );
+		void				signForm( AForm& form );
+		void				executeForm( const AForm& form ) const;
 
 		class GradeTooHighException : public std::exception
 		{

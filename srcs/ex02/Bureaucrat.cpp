@@ -6,20 +6,20 @@
 /*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 15:41:05 by fpedroso          #+#    #+#             */
-/*   Updated: 2026/11/01 16:01:18 by fpedroso         ###   ########.fr       */
+/*   Updated: 2026/11/01 21:13:25 by fpedroso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat( const std::string& name, int grade )
 	: _name(name), _grade(grade)
 {
-	if (grade < 1)
+	if (grade < highestGrade)
 		throw GradeTooHighException();
-	if (grade > 150)
+	if (grade > lowestGrade)
 		throw GradeTooLowException();
 }
 
@@ -51,19 +51,19 @@ int	Bureaucrat::getGrade() const
 
 void	Bureaucrat::incrementGrade()
 {
-	if (_grade <= 1)
+	if (_grade <= highestGrade)
 		throw GradeTooHighException();
 	--_grade;
 }
 
 void	Bureaucrat::decrementGrade()
 {
-	if (_grade >= 150)
+	if (_grade >= lowestGrade)
 		throw GradeTooLowException();
 	++_grade;
 }
 
-void	Bureaucrat::signForm( Form& form )
+void	Bureaucrat::signForm( AForm& form )
 {
 	try
 	{
@@ -76,6 +76,22 @@ void	Bureaucrat::signForm( Form& form )
 					<< " couldn't sign " << form.getName()
 					<< " because " << ex.what()
 					<< "." << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm( AForm const & form ) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << this->_name
+			<< " couldn't execute " << form.getName()
+			<< " because " << ex.what()
+			<< std::endl;
 	}
 }
 
