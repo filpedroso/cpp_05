@@ -11,62 +11,50 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <cstdlib>
 
 int	main()
 {
-	std::cout << "--- Form construction and output ---" << std::endl;
-	Form leaveRequest("Leave request", 50, 25);
-	std::cout << leaveRequest << std::endl;
+	std::srand(42);
+	Bureaucrat intern("Intern", 150);
+	Bureaucrat manager("Manager", 45);
+	Bureaucrat president("President", 1);
 
-	std::cout << "--- Signing forms ---" << std::endl;
-	Bureaucrat employee("Employee", 75);
-	Bureaucrat manager("Manager", 25);
-	std::cout << employee << std::endl;
-	std::cout << manager << std::endl;
-	employee.signForm(leaveRequest);
-	manager.signForm(leaveRequest);
-	std::cout << leaveRequest << std::endl;
+	std::cout << "--- Unsigned execution ---" << std::endl;
+	ShrubberyCreationForm unsignedForm("unsigned_test");
+	std::cout << unsignedForm << std::endl;
+	president.executeForm(unsignedForm);
 
-	std::cout << "--- Direct beSigned call ---" << std::endl;
-	Form expenseReport("Expense report", 100, 50);
-	try
-	{
-		expenseReport.beSigned(employee);
-		std::cout << "Direct signing succeeded." << std::endl;
-	}
-	catch ( const std::exception& e )
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << expenseReport << std::endl;
+	std::cout << "--- Shrubbery creation ---" << std::endl;
+	ShrubberyCreationForm shrubbery("garden");
+	intern.signForm(shrubbery);
+	president.signForm(shrubbery);
+	std::cout << shrubbery << std::endl;
+	president.executeForm(shrubbery);
 
-	std::cout << "--- Invalid form grades ---" << std::endl;
-	try
-	{
-		Form tooHigh("Too high", 0, 50);
-	}
-	catch ( const std::exception& e )
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		Form tooLow("Too low", 50, 151);
-	}
-	catch ( const std::exception& e )
-	{
-		std::cout << e.what() << std::endl;
-	}
+	std::cout << "--- Robotomy request ---" << std::endl;
+	RobotomyRequestForm robotomy("Bender");
+	manager.signForm(robotomy);
+	std::cout << robotomy << std::endl;
+	manager.executeForm(robotomy);
+	manager.executeForm(robotomy);
 
-	std::cout << "--- Form copy construction ---" << std::endl;
-	Form copy(leaveRequest);
+	std::cout << "--- Presidential pardon ---" << std::endl;
+	PresidentialPardonForm pardon("Arthur Dent");
+	manager.signForm(pardon);
+	president.signForm(pardon);
+	std::cout << pardon << std::endl;
+	president.executeForm(pardon);
+
+	std::cout << "--- Copy and assignment ---" << std::endl;
+	PresidentialPardonForm copy(pardon);
+	PresidentialPardonForm assigned("Ford Prefect");
+	assigned = pardon;
 	std::cout << copy << std::endl;
-
-	std::cout << "--- Form assignment ---" << std::endl;
-	Form assigned("Assigned", 100, 100);
-	std::cout << assigned << std::endl;
-	assigned = leaveRequest;
 	std::cout << assigned << std::endl;
 
 	return 0;

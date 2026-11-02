@@ -10,3 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
+
+#include "AForm.hpp"
+
+class ShrubberyCreationForm : public AForm
+{
+	protected:
+		virtual void	performAction() const;
+
+
+	public:
+		ShrubberyCreationForm( const std::string& target );
+		ShrubberyCreationForm( const ShrubberyCreationForm& shrub );
+		virtual ~ShrubberyCreationForm();
+		ShrubberyCreationForm&	operator=( const ShrubberyCreationForm& rhs );
+
+
+	class FileNotOpenException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+
+};
+
+#endif

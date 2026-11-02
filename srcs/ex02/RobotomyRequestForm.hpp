@@ -1,4 +1,23 @@
 /* ************************************************************************** */
+
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
+
+#include "AForm.hpp"
+
+class RobotomyRequestForm : public AForm
+{
+	protected:
+		virtual void	performAction() const;
+
+	public:
+		RobotomyRequestForm( const std::string& target );
+		RobotomyRequestForm( const RobotomyRequestForm& form );
+		virtual ~RobotomyRequestForm();
+		RobotomyRequestForm& operator=( const RobotomyRequestForm& rhs );
+};
+
+#endif
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */

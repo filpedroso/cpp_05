@@ -23,19 +23,17 @@ AForm::AForm( const std::string& name, const std::string& target, int gradeToSig
 }
 
 AForm::AForm( const AForm& form ) :
-	_name(form._name), _target(form._target), _signed(false),
+	_name(form._name), _target(form._target), _signed(form._signed),
 	_gradeToSign(form._gradeToSign), _gradeToExec(form._gradeToExec)
 {}
 
 AForm::~AForm()
 {}
 
-// Name, target and grades are const, and the signature cannot be
-// transferred by assignment (it must come from beSigned()).
-// So assignment intentionally copies nothing.
 AForm& AForm::operator=( const AForm& rhs )
 {
-	(void)rhs;
+	if (this != &rhs)
+		_signed = rhs._signed;
 	return *this;
 }
 

@@ -10,13 +10,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = maggots
+NAME = shrubbery
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILES = main.cpp		\
-		Bureaucrat.cpp	\
-		Form.cpp		\
+FILES = main.cpp					\
+		Bureaucrat.cpp				\
+		AForm.cpp					\
+		PresidentialPardonForm.cpp	\
+		RobotomyRequestForm.cpp		\
+		ShrubberyCreationForm.cpp
 
 OBJ = $(FILES:.cpp=.o)
 
