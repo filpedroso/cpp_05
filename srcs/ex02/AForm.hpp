@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -32,6 +32,7 @@ class AForm
 		virtual void	performAction() const = 0;
 
 	public:
+		AForm();
 		AForm( const std::string& name, const std::string& target, int gradeToSign, int gradeToExec );
 		AForm( const AForm& form );
 		virtual ~AForm();

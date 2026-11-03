@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,11 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+
+AForm::AForm() :
+	_name("Default"), _target("Default"), _signed(false),
+	_gradeToSign(Bureaucrat::lowestGrade), _gradeToExec(Bureaucrat::lowestGrade)
+{}
 
 AForm::AForm( const std::string& name, const std::string& target, int gradeToSign, int gradeToExec ) :
 	_name(name), _target(target), _signed(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)

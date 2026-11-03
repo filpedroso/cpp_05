@@ -1,4 +1,14 @@
 /* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/01 19:30:24 by fpedroso          #+#    #+#             */
+/*   Updated: 2026/11/01 19:30:24 by fpedroso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
@@ -11,6 +21,7 @@ class PresidentialPardonForm : public AForm
 		virtual void	performAction() const;
 
 	public:
+		PresidentialPardonForm();
 		PresidentialPardonForm( const std::string& target );
 		PresidentialPardonForm( const PresidentialPardonForm& form );
 		virtual ~PresidentialPardonForm();
@@ -18,14 +29,3 @@ class PresidentialPardonForm : public AForm
 };
 
 #endif
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/01 19:30:24 by fpedroso          #+#    #+#             */
-/*   Updated: 2026/11/01 19:30:24 by fpedroso         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-

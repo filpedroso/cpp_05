@@ -13,6 +13,10 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
+ShrubberyCreationForm::ShrubberyCreationForm()
+	: AForm("Shrubbery", "Default", 145, 137)
+{}
+
 ShrubberyCreationForm::ShrubberyCreationForm( const std::string& target )
 	: AForm("Shrubbery", target, 145, 137)
 {}

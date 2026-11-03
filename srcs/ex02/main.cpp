@@ -16,10 +16,11 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <cstdlib>
+#include <ctime>
 
 int	main()
 {
-	std::srand(42);
+	std::srand(std::time(NULL));
 	Bureaucrat intern("Intern", 150);
 	Bureaucrat manager("Manager", 45);
 	Bureaucrat president("President", 1);
@@ -34,21 +35,29 @@ int	main()
 	intern.signForm(shrubbery);
 	president.signForm(shrubbery);
 	std::cout << shrubbery << std::endl;
+	intern.executeForm(shrubbery);
 	president.executeForm(shrubbery);
 
 	std::cout << "--- Robotomy request ---" << std::endl;
 	RobotomyRequestForm robotomy("Bender");
 	manager.signForm(robotomy);
 	std::cout << robotomy << std::endl;
-	manager.executeForm(robotomy);
-	manager.executeForm(robotomy);
+	for (int i = 0; i < 4; ++i)
+		manager.executeForm(robotomy);
 
 	std::cout << "--- Presidential pardon ---" << std::endl;
 	PresidentialPardonForm pardon("Arthur Dent");
 	manager.signForm(pardon);
 	president.signForm(pardon);
 	std::cout << pardon << std::endl;
+	manager.executeForm(pardon);
 	president.executeForm(pardon);
+
+	std::cout << "--- Through an AForm pointer ---" << std::endl;
+	AForm*	form = new RobotomyRequestForm("R2-D2");
+	president.signForm(*form);
+	president.executeForm(*form);
+	delete form;
 
 	std::cout << "--- Copy and assignment ---" << std::endl;
 	PresidentialPardonForm copy(pardon);

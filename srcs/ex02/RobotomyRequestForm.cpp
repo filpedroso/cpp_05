@@ -1,7 +1,22 @@
 /* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/01 19:30:19 by fpedroso          #+#    #+#             */
+/*   Updated: 2026/11/01 19:30:19 by fpedroso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
+
+RobotomyRequestForm::RobotomyRequestForm()
+	: AForm("Robotomy request", "Default", 72, 45)
+{
+}
 
 RobotomyRequestForm::RobotomyRequestForm( const std::string& target )
 	: AForm("Robotomy request", target, 72, 45)
@@ -32,14 +47,3 @@ void RobotomyRequestForm::performAction() const
 	else
 		std::cout << "Robotomy failed for " << getTarget() << "." << std::endl;
 }
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fpedroso <fpedroso@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/01 19:30:19 by fpedroso          #+#    #+#             */
-/*   Updated: 2026/11/01 19:30:19 by fpedroso         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-

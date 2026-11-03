@@ -14,6 +14,11 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
+Bureaucrat::Bureaucrat()
+	: _name("Default"), _grade(lowestGrade)
+{
+}
+
 Bureaucrat::Bureaucrat( const std::string& name, int grade )
 	: _name(name), _grade(grade)
 {
@@ -91,7 +96,7 @@ void	Bureaucrat::executeForm( AForm const & form ) const
 		std::cout << this->_name
 			<< " couldn't execute " << form.getName()
 			<< " because " << ex.what()
-			<< std::endl;
+			<< "." << std::endl;
 	}
 }
 
@@ -107,6 +112,6 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream&	operator<<( std::ostream& os, const Bureaucrat& rhs )
 {
-	os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+	os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".";
 	return os;
 }

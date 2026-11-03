@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <string>
-#include <exception>
 
 class AForm;
 
@@ -33,12 +32,6 @@ class Intern
 		Intern&	operator=( const Intern& rhs );
 
 		AForm*	makeForm( const std::string& formName, const std::string& target );
-
-		class NonexistantFormNameException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
 };
 
 #endif

@@ -15,24 +15,39 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+Intern::Intern()
+{
+}
+
+Intern::Intern( const Intern& intern )
+{
+	(void)intern;
+}
+
+Intern::~Intern()
+{
+}
+
+Intern&	Intern::operator=( const Intern& rhs )
+{
+	(void)rhs;
+	return *this;
+}
+
 AForm*	Intern::createShrubbery( const std::string& target )
 {
 	return new ShrubberyCreationForm(target);
 }
 
-AForm*	Intern::createShrubbery( const std::string& target )
+AForm*	Intern::createRobotomy( const std::string& target )
 {
 	return new RobotomyRequestForm(target);
 }
 
-AForm*	Intern::createShrubbery( const std::string& target )
+AForm*	Intern::createPresidential( const std::string& target )
 {
 	return new PresidentialPardonForm(target);
 }
-
-
-
-
 
 AForm*	Intern::makeForm( const std::string& formName, const std::string& target )
 {
@@ -49,5 +64,7 @@ AForm*	Intern::makeForm( const std::string& formName, const std::string& target 
 			return creators[i](target);
 		}
 	}
-	throw NonexistentFormNameException();   // ou: imprimir erro e return NULL
+	std::cout << "Intern couldn't create \"" << formName
+		<< "\" because this form does not exist." << std::endl;
+	return NULL;
 }
